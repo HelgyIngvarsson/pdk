@@ -1,0 +1,3 @@
+package: pdk
+import:
+- package: github.com/lib/pq
