@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
+	"github.com/martini-contrib/sessions"
 )
 
 func main() {
@@ -30,6 +31,8 @@ func main() {
 
 	m.Map(db) //Injecting database connection struct
 
+	store := sessions.NewCookieStore([]byte("secret01121996"))
+	m.Use(sessions.Sessions("auth_session", store))
 	//rendering
 	m.Use(render.Renderer(render.Options{
 		Charset:    "UTF-8", // Sets encoding for json and html content-types. Default is "UTF-8".
@@ -38,6 +41,7 @@ func main() {
 	}))
 
 	m.Get("/api/getArticles", routes.GetArticles)
+	m.Get("/api/getAnonses", routes.GetAnonses)
 
 	port, err := determineListenAddress()
 	if err != nil {

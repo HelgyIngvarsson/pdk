@@ -6,7 +6,10 @@ export class HttpService{
   
     constructor(private http: HttpClient){ }
       
-    getData(){
+    getArticles(){
         return this.http.get('/api/getArticles')
+    }
+    getAnonses(){
+        return this.http.get('/api/getAnonses')
     }
 }

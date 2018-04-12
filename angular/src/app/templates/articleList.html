@@ -5,7 +5,7 @@
             <h2>Articles:</h2>         
             <hr>
             <div *ngFor="let article of articles">
-            <img src="{{article?.Image?.path}}">
+            <img src="{{article?.image?.path}}">
             <h3 class="text-uppercase"><a href="">{{article?.title}}</a></h3>
             <p class="short-article-body">{{article?.body}}</p>
             <p>{{article?.name}}</p>
@@ -14,13 +14,13 @@
             </div>
         </div>
         <div class="col-md-3">
-            <!-- <h2>Anonses:</h2>    
-            <hr></hr>     
-            {{range $key, $value := .Anonses}}
-            <p>{{$value.AnonseDate}}</p>
-            <p>{{$value.Body}}</p>
-            <hr></hr>
-            {{end}} -->
+            <h2>Anonses:</h2>    
+            <hr>     
+            <div *ngFor="let anonse of anonses">
+            <p>{{anonse?.anonse_date}}</p>
+            <p>{{anonse?.body}}</p>
+            <hr>
+            </div>
         </div>
         <div class="col-md-2"></div>
     </div>

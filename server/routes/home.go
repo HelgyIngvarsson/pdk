@@ -6,6 +6,7 @@ import (
 	"pdk/server/models"
 
 	"github.com/martini-contrib/render"
+	"github.com/martini-contrib/sessions"
 )
 
 func GetArticles(rnd render.Render, db *sql.DB) {
@@ -15,4 +16,15 @@ func GetArticles(rnd render.Render, db *sql.DB) {
 		return
 	}
 	rnd.JSON(200, map[string]interface{}{"articles": articles})
+}
+
+func GetAnonses(rnd render.Render, db *sql.DB, session sessions.Session) {
+	session.Set("UserID", "1")
+	// session.Set("UserID", "")
+	anonses, err := models.GetAllAnonses(db)
+	if err != nil {
+		log.Print(err)
+		return
+	}
+	rnd.JSON(200, map[string]interface{}{"anonses": anonses})
 }
