@@ -33,6 +33,7 @@ func main() {
 
 	store := sessions.NewCookieStore([]byte("secret01121996"))
 	m.Use(sessions.Sessions("auth_session", store))
+
 	//rendering
 	m.Use(render.Renderer(render.Options{
 		Charset:    "UTF-8", // Sets encoding for json and html content-types. Default is "UTF-8".

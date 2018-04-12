@@ -19,8 +19,6 @@ func GetArticles(rnd render.Render, db *sql.DB) {
 }
 
 func GetAnonses(rnd render.Render, db *sql.DB, session sessions.Session) {
-	session.Set("UserID", "1")
-	// session.Set("UserID", "")
 	anonses, err := models.GetAllAnonses(db)
 	if err != nil {
 		log.Print(err)

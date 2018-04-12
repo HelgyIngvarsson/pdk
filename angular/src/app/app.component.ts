@@ -6,6 +6,10 @@ import {Anonse} from './models/anonse';
 @Component({
     selector: 'home',
     templateUrl: './templates/articleList.html',
+    styles:[`.short-article-body{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis    }`],
     providers: [HttpService]
 })
 export class AppComponent { 
