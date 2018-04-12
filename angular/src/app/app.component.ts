@@ -1,15 +1,20 @@
 import { Component, style } from '@angular/core';
-     
+import { HttpService} from './http.service';
+import {Article} from './article';
+
 @Component({
     selector: 'menu-component',
-    template: `<label>Введите имя:</label>
-                 <input [(ngModel)]="name" placeholder="name">
-                 <h1>Добро пожаловать {{name}}!</h1>`,
-    styles:  [`:host{
-        padding-top:60px;
-
-    }`]
+    templateUrl: './templates/articleList.html',
+    providers: [HttpService]
 })
 export class AppComponent { 
-    name: "";
+
+    articles: Article[]=[];
+
+    constructor(private httpService: HttpService){}
+
+    ngOnInit(): void {
+       this.httpService.getData().subscribe(data => this.articles = data["articles"])
+    }
+
 }
