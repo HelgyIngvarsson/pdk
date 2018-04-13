@@ -15,6 +15,7 @@ export class LoginComponent {
     login(user:User){
         this.httpService.auth(user)
         .subscribe((data:boolean)=>{this.logged=data},error => console.log(error));
+        console.log(this.logged)
     }
 
 }
