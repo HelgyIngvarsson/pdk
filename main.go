@@ -26,6 +26,7 @@ func main() {
 		http.ServeFile(w, r, "./assets/html/index.html")
 	})
 	m.Use(martini.Static("assets")) //use static file server for Angular
+	m.Use(martini.Static("angular"))
 	staticOptionsResources := martini.StaticOptions{Prefix: "resources"}
 	m.Use(martini.Static("resources", staticOptionsResources))
 
