@@ -6,6 +6,6 @@ export class Article{
     body:string;
     user_id:string;
     name:string;
-    image:Image;
+    Image:Image;
     date:string;
 }

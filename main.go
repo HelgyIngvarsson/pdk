@@ -6,7 +6,6 @@ import (
 	"os"
 
 	"github.com/go-martini/martini"
-	"github.com/martini-contrib/sessions"
 )
 
 func main() {
@@ -19,9 +18,6 @@ func main() {
 	m.Use(martini.Static("angular"))
 	staticOptionsResources := martini.StaticOptions{Prefix: "resources"}
 	m.Use(martini.Static("resources", staticOptionsResources))
-
-	store := sessions.NewCookieStore([]byte("secret01121996"))
-	m.Use(sessions.Sessions("auth_session", store))
 
 	port, err := determineListenAddress()
 	if err != nil {

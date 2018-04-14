@@ -1,5 +1,7 @@
 import { Component, style } from '@angular/core';
+import { SharedService } from './shared.service';
 import { CookieService } from 'angular2-cookie/core';
+
 
 @Component({
     selector: 'menu-component',
@@ -8,18 +10,17 @@ import { CookieService } from 'angular2-cookie/core';
   })
   export class MenuComponent {
 
-    logged: boolean = false
-    user_id:string = this._cookieService.get("auth_session");
+    isUserLoggedIn: boolean;
 
-    constructor(private _cookieService:CookieService){}
+    constructor(private sharedService: SharedService,private _cookieService:CookieService) {
+        this.sharedService.IsUserLoggedIn.subscribe( value => {
+            this.isUserLoggedIn = value;
+        });
+    }
 
-    ngOnInit(): void {
-        if(this.user_id.length >144){
-            console.log(this.user_id);            
-            this.logged = true
-        }else{
-            console.log(this.user_id);            
+    logout(){
+        this.sharedService.IsUserLoggedIn.next(false)
+        this._cookieService.remove("userID")
         }
-     }
     
   }

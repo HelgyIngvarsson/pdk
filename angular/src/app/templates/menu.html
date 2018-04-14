@@ -7,25 +7,19 @@
     <a class="navbar-brand" href="/">Першотравневий БК</a>
     <!-- Links -->
     <div class="collapse navbar-collapse" id="nav-content">   
-    <ul class="navbar-nav" id="menu">
+    <ul class="nav navbar-nav" id="menu">
     <li class="nav-item">
     <a class="nav-link" href="/gallery">Галерея</a>
     </li>
     <li class="nav-item">
     <a class="nav-link" href="#">Колективи</a>
     </li>
-    <li *ngIf="logged" class="nav-item">
-        <a class="nav-link" href="#">Вихід</a>
-    </li>
-    <li *ngIf="logged" class="nav-item">
-        <a class="nav-link" href="#">Кабінет</a>
-    </li>
-    <li *ngIf="!logged" class="nav-item">
-        <a class="nav-link" routerLink="login">Вхід</a>
-    </li>
-    <li *ngIf="!logged" class="nav-item">
-        <a class="nav-link" routerLink="signup">Реєстрація</a>
-    </li>
+    </ul>
+    <ul class="nav navbar-nav">
+            <li *ngIf="!isUserLoggedIn" class="nav-item"><a class="nav-link" routerLink="signup"><span class="glyphicon glyphicon-user"></span> Реєстрація</a></li>
+            <li *ngIf="!isUserLoggedIn" class="nav-item"><a class="nav-link" routerLink="login"><span class="glyphicon glyphicon-log-in"></span> Вхід</a></li>
+            <li *ngIf="isUserLoggedIn" class="nav-item"><button class="btn nav-btn" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Вихід</button></li>
+            <li *ngIf="isUserLoggedIn" class="nav-item"><a class="nav-link" routerLink="cabinet"><span class="glyphicon glyphicon-user"></span> Кабінет</a></li>
     </ul>
     </div>
 </nav>

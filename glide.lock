@@ -1,31 +1,10 @@
 hash: da488f8bcfda4c1705d56d3465d459a1ba6ab2fecae0d5b605d8827b3ac6b507
-updated: 2018-04-12T18:15:46.6505554+03:00
+updated: 2018-04-14T11:24:49.4283716+03:00
 imports:
-- name: github.com/boj/redistore
-  version: 4562487a4bee9a7c272b72bfaeda4917d0a47ab9
 - name: github.com/codegangsta/inject
   version: 33e0aa1cb7c019ccc3fbe049a8262a6403d30504
-- name: github.com/garyburd/redigo
-  version: 569eae59ada904ea8db7a225c2b47165af08735a
-  subpackages:
-  - internal
-  - redis
 - name: github.com/go-martini/martini
   version: 22fa46961aabd2665cf3f1343b146d20028f5071
-- name: github.com/gorilla/context
-  version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
-- name: github.com/gorilla/securecookie
-  version: e59506cc896acb7f7bf732d4fdf5e25f7ccd8983
-- name: github.com/gorilla/sessions
-  version: a2f2a3de9a4a575047f73e3e36bc85ecc3546391
 - name: github.com/lib/pq
   version: d34b9ff171c21ad295489235aec8b6626023cd04
-  subpackages:
-  - oid
-- name: github.com/martini-contrib/render
-  version: ec18f8345a1181146728238980606fb1d6f40e8c
-- name: github.com/martini-contrib/sessions
-  version: fa13114fbcf036dff8185d728651d85fcef772db
-- name: github.com/oxtoacart/bpool
-  version: 4e1c5567d7c2dd59fa4c7c83d34c2f3528b025d6
 testImports: []

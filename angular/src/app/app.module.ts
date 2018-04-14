@@ -7,6 +7,8 @@ import { HomeComponent }   from './components/home.component';
 import { LoginComponent }   from './components/login.component';
 import { RegistrationComponent }   from './components/registration.component';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { SharedService } from './shared.service';
+
 
 import {Routes, RouterModule} from '@angular/router';
 
@@ -22,7 +24,7 @@ const appRoutes: Routes =[
     imports:      [ BrowserModule, FormsModule, HttpClientModule,RouterModule.forRoot(appRoutes)],
     declarations: [ AppComponent, MenuComponent,HomeComponent, LoginComponent,RegistrationComponent ],
     bootstrap:    [ AppComponent],
-    providers:    [CookieService],
+    providers:    [CookieService,SharedService],
     
 })
 export class AppModule { }
