@@ -7,9 +7,10 @@ import { CookieService } from 'angular2-cookie/core';
 @Component({
     selector: 'index',
     template: `<menu-component></menu-component> 
-    <div class="container" style="padding-top: 60px">
+    <div class="container-fluid" style="padding-top: 60px">
     <router-outlet></router-outlet>
-    </div>`,
+    </div>
+    <footer-component></footer-component>`,
     providers: [HttpService]
 })
 export class AppComponent { 

@@ -5,7 +5,7 @@ import {Anonse} from '../models/anonse';
 
 @Component({
     selector: 'home',
-    templateUrl: '../templates/articleList.html',
+    templateUrl: '../templates/home.html',
     styles:[`.short-article-body{
         white-space: nowrap;
         overflow: hidden;

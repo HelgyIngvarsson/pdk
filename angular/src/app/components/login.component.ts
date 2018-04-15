@@ -5,7 +5,7 @@ import { SharedService } from '../shared.service';
 import {Router} from '@angular/router';
 
 
-import {User} from '../models/user';
+import {RegUser} from '../models/reguser';
 export class Storage{
     public userID:string;
 }
@@ -17,9 +17,9 @@ export class Storage{
 export class LoginComponent { 
     constructor(private router: Router,private httpService: HttpService,private _cookieService:CookieService,private sharedService: SharedService){}
 
-    user:User = new User();
+    user:RegUser = new RegUser();
     response: Storage = new Storage();
-    login(user:User){
+    login(user:RegUser){
         this.httpService.auth(user)
         .subscribe((data:Storage)=>{this.response=data;
             if(this.response.userID!=""){
