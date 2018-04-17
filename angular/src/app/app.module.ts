@@ -7,11 +7,12 @@ import { HomeComponent }   from './components/home.component';
 import { FooterComponent }   from './components/footer.component';
 import { LoginComponent }   from './components/login.component';
 import { GalleryComponent }   from './components/gallery.component';
-import { AboutComponent }   from './components/about.component';
+import { BlogComponent }   from './components/blog.component';
+import { PostComponent }   from './components/post.component';
 import { RegistrationComponent }   from './components/registration.component';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { SharedService } from './shared.service';
-GalleryComponent
+import { AgmCoreModule } from '@agm/core';
 
 import {Routes, RouterModule} from '@angular/router';
 
@@ -21,13 +22,16 @@ const appRoutes: Routes =[
     { path: '', component: HomeComponent},
     { path: 'login', component: LoginComponent},
     { path: 'signup', component: RegistrationComponent },
-    { path: 'gallery', component: GalleryComponent },
-    { path: 'about', component: AboutComponent }
+    { path: 'gallery', component: GalleryComponent }, 
+    { path: 'post/:id', component: PostComponent },
+    { path: 'blog', component: BlogComponent }
 ];
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule, HttpClientModule,RouterModule.forRoot(appRoutes)],
-    declarations: [ AppComponent,AboutComponent, MenuComponent,HomeComponent, LoginComponent,RegistrationComponent,FooterComponent,GalleryComponent ],
+    imports:      [ BrowserModule, FormsModule, HttpClientModule,RouterModule.forRoot(appRoutes), AgmCoreModule.forRoot({
+        apiKey: 'AIzaSyDWd6Y5G_dHf-bWA63XgzvYaJqIBcT6Wgs'
+      })],
+    declarations: [ AppComponent,PostComponent,BlogComponent, MenuComponent,HomeComponent, LoginComponent,RegistrationComponent,FooterComponent,GalleryComponent ],
     bootstrap:    [ AppComponent],
     providers:    [CookieService,SharedService],
     

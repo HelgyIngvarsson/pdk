@@ -12,6 +12,10 @@ export class Storage{
 @Component({
     selector: 'login',
     templateUrl: '../templates/login.html',
+    styles:[`container{
+        padding-top:54px;
+        padding-bottom:80px;
+    }`],
     providers: [HttpService]
 })
 export class LoginComponent { 

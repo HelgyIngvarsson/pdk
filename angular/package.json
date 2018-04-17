@@ -8,6 +8,8 @@
         "build": "webpack"
     },
     "dependencies": {
+        "@agm/_dev": "github:SebastianM/angular-google-maps",
+        "@agm/core": "^1.0.0-beta.2",
         "@angular/common": "~5.0.0",
         "@angular/compiler": "~5.0.0",
         "@angular/core": "~5.0.0",

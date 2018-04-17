@@ -28,4 +28,9 @@ export class HttpService{
         return this.http.post('https://pershotravndk.herokuapp.com/api/login', body); 
         // return this.http.post('http://localhost:8000/api/login', body)
     }
+    getArticle(id:string){
+        const body = {id:id}
+        return this.http.post('https://pershotravndk.herokuapp.com/api/getArticle', body); 
+        // return this.http.post('http://localhost:8000/api/getArticle',body)
+    }
 }

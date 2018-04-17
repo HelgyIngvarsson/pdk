@@ -7,7 +7,7 @@ import { CookieService } from 'angular2-cookie/core';
 @Component({
     selector: 'index',
     template: `<menu-component></menu-component> 
-    <div class="container-fluid" style="padding-top: 60px">
+    <div class="container-fluid" style="padding-right:0px;padding-left:0px;">
     <router-outlet></router-outlet>
     </div>
     <footer-component></footer-component>`,
