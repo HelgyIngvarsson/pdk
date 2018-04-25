@@ -3,8 +3,8 @@ import {HttpClient} from '@angular/common/http';
  
 @Injectable()
 export class HttpService{
-    HOST = "http://localhost:8000/";
-    // HOST = "https://apipershotravndk.herokuapp.com/";
+    // HOST = "http://localhost:8000/";
+    HOST = "https://apipershotravndk.herokuapp.com/";
     constructor(private http: HttpClient){ }
       
     getArticles(){
