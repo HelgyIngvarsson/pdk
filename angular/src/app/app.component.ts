@@ -1,7 +1,5 @@
 import { Component, style } from '@angular/core';
-import { HttpService} from './http.service';
-import { SharedService } from './shared.service';
-import { CookieService } from 'angular2-cookie/core';
+import { SharedService } from './services/shared.service';
 
 
 @Component({
@@ -10,13 +8,12 @@ import { CookieService } from 'angular2-cookie/core';
     <div class="container-fluid" style="padding-right:0px;padding-left:0px;">
     <router-outlet></router-outlet>
     </div>
-    <footer-component></footer-component>`,
-    providers: [HttpService]
+    <footer-component></footer-component>`
 })
 export class AppComponent { 
-    constructor(private httpService: HttpService,private _cookieService:CookieService,private sharedService: SharedService){}
+    constructor(private sharedService: SharedService){}
     ngOnInit(): void {
-        if(this._cookieService.get("userID")){
+        if(localStorage.getItem("currentUser")){
             this.sharedService.IsUserLoggedIn.next(true)
         }
     }

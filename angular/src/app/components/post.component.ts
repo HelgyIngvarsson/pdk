@@ -1,5 +1,5 @@
 import { Component, style } from '@angular/core';
-import { HttpService} from '../http.service';
+import { HttpService} from '../services/http.service';
 import {Article} from '../models/article';
 import { ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';

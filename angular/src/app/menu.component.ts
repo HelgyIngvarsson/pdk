@@ -1,6 +1,5 @@
 import { Component, style } from '@angular/core';
-import { SharedService } from './shared.service';
-import { CookieService } from 'angular2-cookie/core';
+import { SharedService } from './services/shared.service';
 
 
 @Component({
@@ -12,7 +11,7 @@ import { CookieService } from 'angular2-cookie/core';
 
     isUserLoggedIn: boolean;
 
-    constructor(private sharedService: SharedService,private _cookieService:CookieService) {
+    constructor(private sharedService: SharedService) {
         this.sharedService.IsUserLoggedIn.subscribe( value => {
             this.isUserLoggedIn = value;
         });
@@ -20,7 +19,7 @@ import { CookieService } from 'angular2-cookie/core';
 
     logout(){
         this.sharedService.IsUserLoggedIn.next(false)
-        this._cookieService.remove("userID")
+        localStorage.removeItem("currentUser")
         }
     
   }

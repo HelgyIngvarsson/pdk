@@ -1,14 +1,11 @@
 import { Component, style } from '@angular/core';
-import { HttpService} from '../http.service';
+import { AuthService} from '../services/authService';
 import { CookieService } from 'angular2-cookie/core';
-import { SharedService } from '../shared.service';
+import { SharedService } from '../services/shared.service';
 import {Router} from '@angular/router';
 
-
 import {RegUser} from '../models/reguser';
-export class Storage{
-    public userID:string;
-}
+
 @Component({
     selector: 'login',
     templateUrl: '../templates/login.html',
@@ -16,25 +13,20 @@ export class Storage{
         padding-top:54px;
         padding-bottom:80px;
     }`],
-    providers: [HttpService]
+    providers: [AuthService]
 })
 export class LoginComponent { 
-    constructor(private router: Router,private httpService: HttpService,private _cookieService:CookieService,private sharedService: SharedService){}
+    constructor(private router: Router,private authService: AuthService, private sharedService: SharedService){}
 
     user:RegUser = new RegUser();
-    response: Storage = new Storage();
     login(user:RegUser){
-        this.httpService.auth(user)
-        .subscribe((data:Storage)=>{this.response=data;
-            if(this.response.userID!=""){
-            this.sharedService.IsUserLoggedIn.next(true),
-            this._cookieService.put("userID", this.response.userID);
-            this.router.navigateByUrl("/");
+        this.authService.login(user).subscribe(result=>{
+            if(result){
+            this.sharedService.IsUserLoggedIn.next(true) 
+            this.router.navigateByUrl("/")
         }else{
-            this._cookieService.put("userID", "");
-        }
-            console.log(this.response.userID)},error => console.log(error));
-            
+            console.log("false")
+        }})
     }
 
 

@@ -1,5 +1,5 @@
 import { Component, style } from '@angular/core';
-import { HttpService} from '../http.service';
+import { HttpService} from '../services/http.service';
 import {Album} from '../models/album';
 
 @Component({

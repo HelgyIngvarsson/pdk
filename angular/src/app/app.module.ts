@@ -11,7 +11,7 @@ import { BlogComponent }   from './components/blog.component';
 import { PostComponent }   from './components/post.component';
 import { RegistrationComponent }   from './components/registration.component';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
-import { SharedService } from './shared.service';
+import { SharedService } from './services/shared.service';
 import { AgmCoreModule } from '@agm/core';
 
 import {Routes, RouterModule} from '@angular/router';
@@ -28,7 +28,9 @@ const appRoutes: Routes =[
 ];
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule, HttpClientModule,RouterModule.forRoot(appRoutes), AgmCoreModule.forRoot({
+    imports:      [ BrowserModule, FormsModule,
+        HttpClientModule,RouterModule.forRoot(appRoutes),
+        AgmCoreModule.forRoot({
         apiKey: 'AIzaSyDWd6Y5G_dHf-bWA63XgzvYaJqIBcT6Wgs'
       })],
     declarations: [ AppComponent,PostComponent,BlogComponent, MenuComponent,HomeComponent, LoginComponent,RegistrationComponent,FooterComponent,GalleryComponent ],

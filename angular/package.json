@@ -5,7 +5,8 @@
     "author": "Gavrilin Oleg",
     "scripts": {
         "dev": "webpack-dev-server --hot --open",
-        "build": "webpack"
+        "build": "webpack",
+        "start": "go main.go"
     },
     "dependencies": {
         "@agm/_dev": "github:SebastianM/angular-google-maps",
