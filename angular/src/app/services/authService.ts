@@ -30,5 +30,19 @@ export class AuthService{
       });
 
     }
+    registration(user:RegUser): Observable<boolean>{
+        const body ={username: user.username,password:user.password}
+        let success: boolean
+        return   this.http.post(this.HOST+'api/registration', body).map(data=>{success = data["success"];
+        if(success){
+            this.token = data["token"];
+            localStorage.setItem('currentUser',JSON.stringify({token:this.token}));
+            return true;
+        }else{
+            return false;
+        }
+      });
+
+    }
 
 }

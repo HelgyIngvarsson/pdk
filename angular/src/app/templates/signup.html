@@ -3,26 +3,22 @@ padding-bottom:80px;">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <form method="POST" name="singUp" action="/registration">
-                <h2>Registration</h2>
+            <h2>Реєстрація</h2>
                 <div class="form-control">
-                <label>Username:</label>
-                <input type="text" name="username" style="width: 100%">
-                <label>Password:</label>
-                <input type="password" name="password" style="width: 100%">
-                <label>Name:</label>
-                <input type="text" name="name" style="width: 100%">
-                <label>Sername:</label>
-                <input type="text" name="sername" style="width: 100%">
-                <label>Email:</label>
-                <input type="email" name="email" style="width: 100%">
-                <label>Description:</label>
-                <textarea name="description" style="width: 100%"></textarea>
-                <label>Mailing:</label>
-                <input type="checkbox" name="mailing">
+                    <div class="form-group">
+                        <label>Логін:</label>
+                        <input type="text" name="username" [(ngModel)]=user.username style="width: 100%">
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль:</label>
+                        <input type="password" name="password" [(ngModel)]=user.password style="width: 100%">
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" name="email" [(ngModel)]=user.email style="width: 100%">
+                    </div>
                 </div>
-                <button type="submit">SignUp</button>
-            </form>
+                <button class="btn btn-default" (click)="registration(user)">Registration</button>
         </div>
         <div class="col-md-2"></div>
     </div>

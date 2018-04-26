@@ -5,7 +5,12 @@ import {HttpClient} from '@angular/common/http';
 export class HttpService{
     // HOST = "http://localhost:8000/";
     HOST = "https://apipershotravndk.herokuapp.com/";
-    constructor(private http: HttpClient){ }
+    public token: string;
+    constructor(private http: HttpClient){
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if(currentUser)
+        this.token = currentUser.token;
+     }
       
     getArticles(){
         return this.http.get(this.HOST+'api/getArticles')
@@ -21,5 +26,8 @@ export class HttpService{
     }
     getArticle(id:string){
         return this.http.get(this.HOST+'api/getArticle/'+id);
+    }
+    getCurrentProfile(){
+        return this.http.get(this.HOST+'api/current_profile',{headers:{"x-access-token":this.token}})
     }
 }

@@ -1,0 +1,70 @@
+<div class="container">
+        <div class="row my-2">
+            <div class="col-lg-8 order-lg-2">
+                    <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link active">Профіль</a>
+                                </li>
+                            <li class="nav-item">
+                                <a href="" data-target="#feedback" data-toggle="tab" class="nav-link">Зворотній зв'язок</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content py-4">
+                        <div class="tab-pane active" id="edit">
+                                <form role="form">
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Ім'я</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" [(ngModel)]="profile.name" name="name" placeholder="profile.name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Фамілія</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" [(ngModel)]="profile.sername" name="sername" placeholder="profile.sername">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Елктронна адреса</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="email" [(ngModel)]="profile.email" name="email" placeholder="profile.email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Про себе</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" [(ngModel)]="profile.desc" name="desc" placeholder="profile.desc">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Електронне сповіщення</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="checkbox" [(ngModel)]="profile.mailing" name="mailing">
+                                        </div>
+                                    </div>                                    
+                                    <div class="form-group row">
+                                        <div class="col-lg-12">
+                                            <input type="button" class="btn btn-primary" value="Зберегти">
+                                        </div>
+                                    </div>
+                                </form>
+                        </div>
+                            <div class="tab-pane" id="feedback">
+                                
+                            </div>                            
+                        </div>
+                    </div>
+            <div class="col-lg-4 order-lg-1 text-center">
+                <img src="{{profile?.image?.path}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+                <label class="custom-file" >
+                    <input type="file" id="file" class="custom-file-input">
+                    <span class="custom-file-control">Завантажити</span>
+                </label>
+                <div style="padding-top: 40px">
+                <p class="text-center">{{profile?.sername}} {{profile?.name}}</p>
+                <p class="text-center font-italic">{{profile?.email}}</p>
+                <p class="text-center font-weight-light">{{profile?.desc}}</p>    
+                </div>
+            </div>
+        </div>
+    </div>

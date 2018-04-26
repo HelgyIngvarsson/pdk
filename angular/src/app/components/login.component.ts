@@ -1,6 +1,5 @@
 import { Component, style } from '@angular/core';
 import { AuthService} from '../services/authService';
-import { CookieService } from 'angular2-cookie/core';
 import { SharedService } from '../services/shared.service';
 import {Router} from '@angular/router';
 

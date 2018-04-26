@@ -10,9 +10,10 @@ import { GalleryComponent }   from './components/gallery.component';
 import { BlogComponent }   from './components/blog.component';
 import { PostComponent }   from './components/post.component';
 import { RegistrationComponent }   from './components/registration.component';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { SharedService } from './services/shared.service';
 import { AgmCoreModule } from '@agm/core';
+import { AuthGuardService } from './services/auth.guard';
+import { CabinetComponent } from './components/cabinet.component';
 
 import {Routes, RouterModule} from '@angular/router';
 
@@ -24,18 +25,21 @@ const appRoutes: Routes =[
     { path: 'signup', component: RegistrationComponent },
     { path: 'gallery', component: GalleryComponent }, 
     { path: 'post/:id', component: PostComponent },
-    { path: 'blog', component: BlogComponent }
+    { path: 'blog', component: BlogComponent },
+    { path: 'cabinet',component:CabinetComponent,canActivate:[AuthGuardService]}
 ];
 
 @NgModule({
     imports:      [ BrowserModule, FormsModule,
-        HttpClientModule,RouterModule.forRoot(appRoutes),
-        AgmCoreModule.forRoot({
-        apiKey: 'AIzaSyDWd6Y5G_dHf-bWA63XgzvYaJqIBcT6Wgs'
-      })],
-    declarations: [ AppComponent,PostComponent,BlogComponent, MenuComponent,HomeComponent, LoginComponent,RegistrationComponent,FooterComponent,GalleryComponent ],
+                    HttpClientModule,RouterModule.forRoot(appRoutes),
+                    AgmCoreModule.forRoot({apiKey: 'AIzaSyDWd6Y5G_dHf-bWA63XgzvYaJqIBcT6Wgs'})],
+    declarations: [ AppComponent,CabinetComponent,
+                    PostComponent,BlogComponent, 
+                    MenuComponent,HomeComponent, 
+                    LoginComponent,RegistrationComponent,
+                    FooterComponent,GalleryComponent ],
     bootstrap:    [ AppComponent],
-    providers:    [CookieService,SharedService],
+    providers:    [ SharedService,AuthGuardService],
     
 })
 export class AppModule { }

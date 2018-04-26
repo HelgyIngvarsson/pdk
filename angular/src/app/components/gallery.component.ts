@@ -6,7 +6,7 @@ import {Album} from '../models/album';
     selector: 'gallery-component',
     templateUrl: '../templates/gallery.html',
     // styleUrls:['../templates/compact-gallery.css'],
-    providers: []
+    providers: [HttpService]
 })
 export class GalleryComponent { 
     albums: Album[] = [];
