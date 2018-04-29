@@ -22,8 +22,11 @@
         <hr>
 
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="{{article?.Image?.path}}" alt="">
-
+        <!-- <img class="img-fluid rounded" src="{{article?.Image?.path}}" alt=""> -->
+        <cl-image *ngIf="article?.Image?.path"  public-id="{{article?.Image?.path}}" >
+            <cl-transformation width="700" height="300" crop="mfit">
+            </cl-transformation>
+        </cl-image>
         <hr>
 
         <!-- Post Content -->
@@ -46,7 +49,12 @@
 
         <!-- Single Comment -->
         <div class="media mb-4" *ngFor="let comment of comments">
-          <img class="d-flex mr-3 rounded-circle" style="max-width: 50px;max-height: 50px" src="{{comment.profile.image.path}}" alt="">
+            <cl-image public-id="{{comment.profile.image.path}}" >
+                <cl-transformation width="75" height="75" gravity="face" radius="max" crop="crop">
+                </cl-transformation>
+                <cl-transformation width="50" crop="scale">
+                </cl-transformation>
+              </cl-image>
           <div class="media-body">
             <h5 class="mt-0">{{comment?.profile?.name}} {{comment?.profile?.sername}}</h5>
             {{comment?.body}}

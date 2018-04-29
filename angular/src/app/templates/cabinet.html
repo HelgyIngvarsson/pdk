@@ -1,7 +1,12 @@
 <div class="container">
         <div class="row my-2">
                 <div class="col-lg-4 order-lg-1 text-center">
-                        <img class="rounded-circle img-fluid d-block mx-auto" src="{{profile?.image?.path}}"  alt="avatar">
+                        <cl-image *ngIf="profile?.image?.path" public-id="{{profile?.image?.path}}" >
+                            <cl-transformation width="400" height="400" gravity="face" radius="max" crop="crop">
+                            </cl-transformation>
+                            <cl-transformation width="200" crop="scale">
+                            </cl-transformation>
+                        </cl-image>
                         <label class="custom-file" >
                             <input type="file" id="fileupload" #fileInput ng2FileSelect [style.display]="'none'" [uploader]="uploader" (change)="fileInput.value=''; changeImage()"
                         multiple />

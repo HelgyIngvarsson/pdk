@@ -11,7 +11,11 @@ padding-bottom:80px;">
         
             <!-- Blog Post -->
             <div class="card mb-4" *ngFor="let article of articles">
-              <img class="card-img-top" src="{{article?.Image?.path}}" style="max-width: 750px;max-height:300px;"alt="Card image cap">
+                <cl-image public-id="{{article?.Image?.path}}" >
+                    <cl-transformation width="750" height="300" crop="mfit" className="card-img-top">
+                    </cl-transformation>
+                </cl-image>
+              <!-- <img class="card-img-top" src="{{article?.Image?.path}}" style="max-width: 750px;max-height:300px;"alt="Card image cap"> -->
               <div class="card-body">
                 <h2 class="card-title">{{article?.title}}</h2>
                 <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">

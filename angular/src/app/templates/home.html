@@ -65,7 +65,12 @@
         <div class="col-lg-2 col-sm-0"></div>
         <div class="col-lg-2 col-sm-0"></div>
         <div *ngFor="let admin of admins" class="col-lg-4 col-sm-6 text-center mb-4">
-            <img class="rounded-circle img-fluid d-block mx-auto" src="{{admin?.image.path}}" alt="">
+            <cl-image public-id="{{admin?.image.path}}" >
+              <cl-transformation width="400" height="400" gravity="face" radius="max" crop="crop">
+              </cl-transformation>
+              <cl-transformation width="200" crop="scale">
+              </cl-transformation>
+            </cl-image>
             <h4>{{admin?.name}} {{admin?.sername}}
               <small>{{admin?.desc}}</small>
             </h4>

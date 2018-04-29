@@ -36,7 +36,7 @@ export class CabinetComponent {
         this.uploader.onCompleteItem = (item: any, response: string, status: number, headers: ParsedResponseHeaders) =>
            {
                 let data = JSON.parse(response);
-                this.profile.image.path = "https://res.cloudinary.com/pershotravnbk/image/upload/v1524851663/"+data["public_id"];
+                this.profile.image.path = data["public_id"];
                 this.httpService.updateImage(this.profile.image).subscribe(result=>{
                     let success = result["success"];
                     if(!success){
