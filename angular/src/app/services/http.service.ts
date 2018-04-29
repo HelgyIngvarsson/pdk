@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
- 
+import {Profile}    from   '../models/profile'
+import { Feedback}  from '../models/feedback'
+import { Image } from '../models/image';
+
 @Injectable()
 export class HttpService{
     // HOST = "http://localhost:8000/";
@@ -29,5 +32,14 @@ export class HttpService{
     }
     getCurrentProfile(){
         return this.http.get(this.HOST+'api/current_profile',{headers:{"x-access-token":this.token}})
+    }
+    updateProfile(profile:Profile){
+        return this.http.post(this.HOST+'api/update_profile',profile,{headers:{"x-access-token":this.token}})
+    }
+    sendFeedback(feedback:Feedback){
+        return this.http.post(this.HOST+'api/send_feedback',feedback,{headers:{"x-access-token":this.token}})
+    }
+    updateImage(image:Image){
+        return this.http.post(this.HOST+'api/update_image',image,{headers:{"x-access-token":this.token}})
     }
 }

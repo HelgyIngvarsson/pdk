@@ -31,7 +31,7 @@ export class AuthService{
 
     }
     registration(user:RegUser): Observable<boolean>{
-        const body ={username: user.username,password:user.password}
+        const body ={username: user.username,password:user.password, email:user.email}
         let success: boolean
         return   this.http.post(this.HOST+'api/registration', body).map(data=>{success = data["success"];
         if(success){

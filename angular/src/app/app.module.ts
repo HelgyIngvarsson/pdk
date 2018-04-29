@@ -14,9 +14,11 @@ import { SharedService } from './services/shared.service';
 import { AgmCoreModule } from '@agm/core';
 import { AuthGuardService } from './services/auth.guard';
 import { CabinetComponent } from './components/cabinet.component';
-
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import * as cloudinary from 'cloudinary-core';
+import {FileUploadModule} from 'ng2-file-upload';
 import {Routes, RouterModule} from '@angular/router';
-
+import cloudinaryConfiguration from './cloudinary.config';
 import { HttpClientModule }   from '@angular/common/http';
  
 const appRoutes: Routes =[
@@ -30,9 +32,10 @@ const appRoutes: Routes =[
 ];
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule,
+    imports:      [ BrowserModule, FormsModule,  FileUploadModule,
                     HttpClientModule,RouterModule.forRoot(appRoutes),
-                    AgmCoreModule.forRoot({apiKey: 'AIzaSyDWd6Y5G_dHf-bWA63XgzvYaJqIBcT6Wgs'})],
+                    AgmCoreModule.forRoot({apiKey: 'AIzaSyDWd6Y5G_dHf-bWA63XgzvYaJqIBcT6Wgs'}),
+                    CloudinaryModule.forRoot(cloudinary,cloudinaryConfiguration)],
     declarations: [ AppComponent,CabinetComponent,
                     PostComponent,BlogComponent, 
                     MenuComponent,HomeComponent, 

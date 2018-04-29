@@ -1,5 +1,18 @@
 <div class="container">
         <div class="row my-2">
+                <div class="col-lg-4 order-lg-1 text-center">
+                        <img class="rounded-circle img-fluid d-block mx-auto" src="{{profile?.image?.path}}"  alt="avatar">
+                        <label class="custom-file" >
+                            <input type="file" id="fileupload" #fileInput ng2FileSelect [style.display]="'none'" [uploader]="uploader" (change)="fileInput.value=''; changeImage()"
+                        multiple />
+                            <span class="btn btn-outline-primary">Завантажити</span>
+                        </label>
+                        <div style="padding-top: 40px">
+                        <p class="text-center">{{profile?.sername}} {{profile?.name}}</p>
+                        <p class="text-center font-italic">{{profile?.email}}</p>
+                        <p class="text-center font-weight-light">{{profile?.desc}}</p>    
+                        </div>
+                    </div>
             <div class="col-lg-8 order-lg-2">
                     <ul class="nav nav-tabs">
                             <li class="nav-item">
@@ -37,34 +50,29 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Електронне сповіщення</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="checkbox" [(ngModel)]="profile.mailing" name="mailing">
-                                        </div>
+                                        <label class="col-lg-12 col-form-label form-control-label">Електронне сповіщення <input class="form-control" type="checkbox" [(ngModel)]="profile.mailing" name="mailing"></label>
                                     </div>                                    
                                     <div class="form-group row">
                                         <div class="col-lg-12">
-                                            <input type="button" class="btn btn-primary" value="Зберегти">
+                                            <input type="button" class="btn btn-primary" (click)=updateProfile(profile) value="Зберегти">
                                         </div>
                                     </div>
                                 </form>
                         </div>
-                            <div class="tab-pane" id="feedback">
-                                
+                            <div class="tab-pane" id="feedback">           
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <h4>Залишити повідомлення</h4>
+                                        <textarea class="form-control textarea" rows="3" name=feedback></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <input type="button" class="btn btn-primary" (click)=sendFeedback(feedback) value="Відправити">
+                                    </div>
+                                </div>                    
                             </div>                            
                         </div>
-                    </div>
-            <div class="col-lg-4 order-lg-1 text-center">
-                <img src="{{profile?.image?.path}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-                <label class="custom-file" >
-                    <input type="file" id="file" class="custom-file-input">
-                    <span class="custom-file-control">Завантажити</span>
-                </label>
-                <div style="padding-top: 40px">
-                <p class="text-center">{{profile?.sername}} {{profile?.name}}</p>
-                <p class="text-center font-italic">{{profile?.email}}</p>
-                <p class="text-center font-weight-light">{{profile?.desc}}</p>    
-                </div>
-            </div>
+                    </div>            
         </div>
     </div>
