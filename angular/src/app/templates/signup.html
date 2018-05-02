@@ -15,7 +15,7 @@ padding-bottom:80px;">
                 <div class="form-group">
                     <label>Пароль:</label>
                     <input class="form-control" type="password" name="password" [(ngModel)]=user.password style="width: 100%" #password="ngModel" 
-                    required pattern="[A-Za-z0-9]{6, 20}">
+                    required pattern="[a-zA-Z_0-9]{6,20}">
                     <div [hidden]="password.valid || password.untouched" class="alert alert-danger">
                             Не вказаний пароль(не меньше 6 символів)
                     </div>
