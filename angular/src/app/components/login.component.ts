@@ -2,8 +2,8 @@ import { Component, style } from '@angular/core';
 import { AuthService} from '../services/authService';
 import { SharedService } from '../services/shared.service';
 import {Router} from '@angular/router';
-
 import {RegUser} from '../models/reguser';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'login',
@@ -16,7 +16,6 @@ import {RegUser} from '../models/reguser';
 })
 export class LoginComponent { 
     constructor(private router: Router,private authService: AuthService, private sharedService: SharedService){}
-
     user:RegUser = new RegUser();
     login(user:RegUser){
         this.authService.login(user).subscribe(result=>{

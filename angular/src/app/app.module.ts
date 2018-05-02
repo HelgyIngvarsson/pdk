@@ -20,6 +20,11 @@ import {FileUploadModule} from 'ng2-file-upload';
 import {Routes, RouterModule} from '@angular/router';
 import cloudinaryConfiguration from './cloudinary.config';
 import { HttpClientModule }   from '@angular/common/http';
+import { ReactiveFormsModule }   from '@angular/forms';
+
+import 'hammerjs';
+import 'mousetrap';
+import { ModalGalleryModule } from 'angular-modal-gallery';
  
 const appRoutes: Routes =[
     { path: '', component: HomeComponent},
@@ -35,7 +40,8 @@ const appRoutes: Routes =[
     imports:      [ BrowserModule, FormsModule,  FileUploadModule,
                     HttpClientModule,RouterModule.forRoot(appRoutes),
                     AgmCoreModule.forRoot({apiKey: 'AIzaSyDWd6Y5G_dHf-bWA63XgzvYaJqIBcT6Wgs'}),
-                    CloudinaryModule.forRoot(cloudinary,cloudinaryConfiguration)],
+                    CloudinaryModule.forRoot(cloudinary,cloudinaryConfiguration),
+                    ModalGalleryModule.forRoot(), ReactiveFormsModule],
     declarations: [ AppComponent,CabinetComponent,
                     PostComponent,BlogComponent, 
                     MenuComponent,HomeComponent, 
