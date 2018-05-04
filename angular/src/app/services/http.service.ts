@@ -3,13 +3,16 @@ import {HttpClient} from '@angular/common/http';
 import {Profile}    from   '../models/profile'
 import { Feedback}  from '../models/feedback'
 import { Image } from '../models/image';
+import { Comment } from '../models/comment';
 
 @Injectable()
 export class HttpService{
-    // HOST = "http://localhost:8000/";
-    HOST = "https://apipershotravndk.herokuapp.com/";
+    HOST:string;
+    // HOST = "https://apipershotravndk.herokuapp.com/";
     public token: string;
     constructor(private http: HttpClient){
+        // this.HOST = "http://localhost:8000/";
+        this.HOST = "https://apipershotravndk.herokuapp.com/";
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if(currentUser)
         this.token = currentUser.token;
@@ -38,6 +41,9 @@ export class HttpService{
     }
     sendFeedback(feedback:Feedback){
         return this.http.post(this.HOST+'api/send_feedback',feedback,{headers:{"x-access-token":this.token}})
+    }
+    sendComment(comment:Comment){
+        return this.http.post(this.HOST+'api/send_comment',comment,{headers:{"x-access-token":this.token}})
     }
     updateImage(image:Image){
         return this.http.post(this.HOST+'api/update_image',image,{headers:{"x-access-token":this.token}})

@@ -6,6 +6,8 @@ import { Router}            from '@angular/router';
 import {UploadService}      from '../services/upload.service'
 import { FileUploader, ParsedResponseHeaders} from 'ng2-file-upload';
 import { Cloudinary } from '@cloudinary/angular-5.x';
+import { SharedService } from '../services/shared.service';
+
 
 @Component({
     selector: 'cabinet-component',
@@ -15,8 +17,14 @@ import { Cloudinary } from '@cloudinary/angular-5.x';
 })
 export class CabinetComponent { 
     uploader:FileUploader;
-    constructor(private router: Router, private httpService: HttpService,private uploadService: UploadService){
+    isUserLoggedIn: boolean;
+
+    constructor(private sharedService: SharedService, private router: Router, private httpService: HttpService,private uploadService: UploadService) {
+        this.sharedService.IsUserLoggedIn.subscribe( value => {
+            this.isUserLoggedIn = value;
+        });
     }
+
     profile:Profile = new(Profile)
     feedback:Feedback = new(Feedback)
 
@@ -54,12 +62,14 @@ export class CabinetComponent {
         })
     }
     sendFeedback(feedback:Feedback){
-        this.httpService.sendFeedback(feedback).subscribe(result=>{
+        // this.feedback.message = feedback;
+        console.log(feedback)
+        this.httpService.sendFeedback(this.feedback).subscribe(result=>{
             let success = result["success"];
             if(!success){
                 this.router.navigateByUrl("/login")
             }else{
-                feedback.message = ""
+                this.feedback.message = ""
             }
         })
     }

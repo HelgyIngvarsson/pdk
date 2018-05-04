@@ -48,7 +48,7 @@ const appRoutes: Routes =[
                     LoginComponent,RegistrationComponent,
                     FooterComponent,GalleryComponent ],
     bootstrap:    [ AppComponent],
-    providers:    [ SharedService,AuthGuardService],
+    providers:    [ SharedService, AuthGuardService],
     
 })
 export class AppModule { }

@@ -38,12 +38,14 @@
         <div class="card my-4">
           <h5 class="card-header">Залишити коментарій:</h5>
           <div class="card-body">
-            <form>
               <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3" name="commentbody" [(ngModel)]="newComment.body" #commentbody="ngModel"
+                required pattern="[а-яА-Яa-zA-Z_0-9]{1,200}"></textarea>
+                <div [hidden]="commentbody.valid || commentbody.untouched" class="alert alert-danger">
+                  до 200 символів
+                </div>
               </div>
-              <button type="submit" class="btn btn-primary">Відправити</button>
-            </form>
+              <button type="submit" [disabled]="commentbody.invalid" class="btn btn-primary" (click)="sendComment(newComment,article.id)">Відправити</button>
           </div>
         </div>
 

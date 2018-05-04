@@ -33,25 +33,38 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Ім'я</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text" [(ngModel)]="profile.name" name="name" placeholder="profile.name">
+                                            <input class="form-control" type="text" [(ngModel)]="profile.name" name="name" placeholder="profile.name" #name="ngModel"
+                                            required pattern="[а-яА-Яa-zA-Z]{2,200}">
+                                            <div [hidden]="message.valid || message.untouched" class="alert alert-danger">
+                                                Не вказане ім'я
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Фамілія</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text" [(ngModel)]="profile.sername" name="sername" placeholder="profile.sername">
+                                            <input class="form-control" type="text" [(ngModel)]="profile.sername" name="sername" placeholder="profile.sername" #sername="ngModel"
+                                            required pattern="[а-яА-Яa-zA-Z]{2,200}">
+                                            <div [hidden]="message.valid || message.untouched" class="alert alert-danger">
+                                                Не вказана фамілія
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Елктронна адреса</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="email" [(ngModel)]="profile.email" name="email" placeholder="profile.email">
+                                            <input class="form-control" type="email" [(ngModel)]="profile.email" name="email" placeholder="profile.email" #email="ngModel"
+                                            required email>
+                                            <div [hidden]="message.valid || message.untouched" class="alert alert-danger">
+                                                Не вказана елктронна адреса
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Про себе</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text" [(ngModel)]="profile.desc" name="desc" placeholder="profile.desc">
+                                            <input class="form-control" type="text" [(ngModel)]="profile.desc" name="desc" placeholder="profile.desc" #desc="ngModel" 
+                                            required pattern="[а-яА-Яa-zA-Z_09]{0,200}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -59,7 +72,7 @@
                                     </div>                                    
                                     <div class="form-group row">
                                         <div class="col-lg-12">
-                                            <input type="button" class="btn btn-primary" (click)=updateProfile(profile) value="Зберегти">
+                                            <input type="button" [disabled]="name.invalid || sername.invalid || desc.invalid || email.invalid"  class="btn btn-primary" (click)=updateProfile(profile) value="Зберегти">
                                         </div>
                                     </div>
                                 </form>
@@ -68,12 +81,16 @@
                                 <div class="form-group row">
                                     <div class="col-lg-12">
                                         <h4>Залишити повідомлення</h4>
-                                        <textarea class="form-control textarea" rows="3" name=feedback></textarea>
+                                        <textarea class="form-control textarea" rows="3" name="message" [(ngModel)]="feedback.message" #message="ngModel"
+                                        required pattern="[а-яА-Яa-zA-Z_0-9]{1,200}"></textarea>
+                                        <div [hidden]="message.valid || message.untouched" class="alert alert-danger">
+                                          до 200 символів
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-12">
-                                        <input type="button" class="btn btn-primary" (click)=sendFeedback(feedback) value="Відправити">
+                                        <input type="button" [disabled]="message.invalid"  class="btn btn-primary" (click)=sendFeedback(feedback) value="Відправити">
                                     </div>
                                 </div>                    
                             </div>                            

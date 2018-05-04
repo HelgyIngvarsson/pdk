@@ -6,8 +6,8 @@ import 'rxjs/add/operator/map'
 
 @Injectable()
 export class AuthService{
-    // HOST = "http://localhost:8000/";
-    HOST = "https://apipershotravndk.herokuapp.com/";
+    HOST = "http://localhost:8000/";
+    // HOST = "https://apipershotravndk.herokuapp.com/";
     public token: string;
 
     constructor(private http: HttpClient){
